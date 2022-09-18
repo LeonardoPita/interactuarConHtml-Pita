@@ -15,7 +15,7 @@ const purchase = (selection) => {
     alert(`selected 1 ${products[selection - 1].name} whith a price of ${products[selection - 1].price}\n`); //Alert the product selected
     subTotal += (products[selection - 1].price);    //Add the prodect price to "subtotal"
     myPurchase.push(products[selection - 1].name);      //Push the selected product to myPurchase array.
-    selectProducts();   
+    selectProducts();
 }
 let myPurchase = []
 
@@ -35,6 +35,13 @@ let showProducts = products.map(show = (items) => {
     return `\noption ${items.option} - ${items.name} - price ${items.price}`;
 });
 
+for (const pro of products) {
+    let container = document.createElement('p');
+
+    container.innerHTML = `Option ${pro.option} - ${pro.name} - price: $${pro.price}`;
+    document.getElementById('ourProducts').appendChild(container);
+}
+
 let subTotal = 0;
 let tax = 1.21;
 let total = 0;
@@ -42,7 +49,7 @@ let total = 0;
 //Alert the products to start
 const selectProducts = () => {
     let selection = Number(prompt(`Select your product \n${showProducts} \n9. Stop shoping`));
-    if (selection > 0 && selection < products.length+1) {
+    if (selection > 0 && selection < products.length + 1) {
         purchase(selection);
     } else if (selection == 9) {
         alert(`Purchase ended`);
@@ -60,9 +67,6 @@ selectProducts();
 totalized();
 total = total.toFixed(2);
 let alerted = `Hola ${buyer} you bought ${myPurchase.length} items, which are these:\n ${myPurchase.join(`\n,`)}. \n Whith a subtotal of ${subTotal} and a total of ${total}. \n Thank you for your purchase, we hope to see you soon again!`
-
-const printProducts = document.getElementById('ourProducts');
-printProducts.innerHTML = showProducts;
 
 const printCurrent = document.getElementById('current');
 printCurrent.innerHTML = myPurchase;

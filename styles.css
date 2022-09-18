@@ -33,6 +33,7 @@ ul {
 /*---------------------------- STYLES------------------------- */
 #container {
     width: 80%;
+    min-height: 100vh;
     background-color: #f7b633da;
     margin: 0 auto;
     padding-top: 20px;
